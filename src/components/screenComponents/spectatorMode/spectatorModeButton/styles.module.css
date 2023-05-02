@@ -1,0 +1,8 @@
+.SpectatorModeButton {
+  border: none;
+  outline: none;
+  padding: 15px;
+  font-size: 32px;
+  cursor: pointer;
+  background-color: gold;
+}

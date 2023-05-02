@@ -1,0 +1,14 @@
+/* .main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+} */
+
+.BattleModeButton {
+  border: none;
+  outline: none;
+  padding: 15px;
+  font-size: 32px;
+  cursor: pointer;
+  background-color: red;
+}

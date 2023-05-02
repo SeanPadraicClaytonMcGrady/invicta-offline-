@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  width: 100%;
+  height: 8rem;
+  padding: 0.8rem;
+  border: 5px solid gray;
+  margin: 0;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.healthBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

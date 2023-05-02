@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  height: 8rem;
+  padding: 0.8rem;
+  border: 5px solid gray;
+  margin: 0;
+  background-color: beige;
+}
+
+.message {
+  text-align: center;
+  font-size: 0.8rem;
+  color: black;
+}

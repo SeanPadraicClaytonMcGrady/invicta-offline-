@@ -1,0 +1,56 @@
+.main {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.summary {
+  display: flex;
+  flex-direction: row;
+}
+
+.enemySprite {
+  display: flex;
+  flex-direction: row-reverse;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.playerSprite {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.gameHeader {
+  display: flex;
+  background-color: gray;
+  justify-content: space-between;
+}
+
+.turnHeader {
+  display: flex;
+  background-color: gray;
+  justify-content: center;
+}
+
+.user {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.enemy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.battleAnnouncer {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

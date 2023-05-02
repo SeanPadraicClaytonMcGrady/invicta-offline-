@@ -1,0 +1,18 @@
+.main {
+  background-image: url("src/assets/backgrounds/startpage-transformed.jpeg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+}
