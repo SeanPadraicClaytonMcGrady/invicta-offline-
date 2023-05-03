@@ -7,5 +7,5 @@ export const ThracianStats = {
   physicalAttack: 6,
   dodgeRating: 5,
   protection: 0,
-  medicical: 2,
+  medical: 2,
 };

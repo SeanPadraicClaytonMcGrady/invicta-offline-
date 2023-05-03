@@ -1,16 +1,17 @@
-export const attack ({attacker, defender}) => {
-    const attackDamage = attacker.attack + attacker.level
+export const block = ({ attacker }) => {
+  return attacker.protection + 0.4;
+};
 
-    const finalDamage = attackDamage * defender.protection
+export const attack = ({ attacker, defender }) => {
+  const attackDamage = attacker.physicalAttack + attacker.level;
 
-    return finalDamage
-}
+  const finalDamage =
+    attackDamage - attacker.physicalAttack * defender.protection;
 
-export const bandage ({receiver}) => {
-    const recovery = receiver.medical + receiver.level
-    return recovery
-}
+  return finalDamage;
+};
 
-export const block ({receiver}) => {
-    receiver.protection + 0.4
-}
+export const bandage = ({ attacker }) => {
+  const recovery = attacker.medical + attacker.level;
+  return recovery;
+};

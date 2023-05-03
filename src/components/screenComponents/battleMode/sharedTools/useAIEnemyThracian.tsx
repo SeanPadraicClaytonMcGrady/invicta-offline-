@@ -5,7 +5,7 @@ export const useAIEnemyThracian = (turn: number) => {
 
   useEffect(() => {
     if (turn === 1) {
-      const options = ["attack", "block", "bandage"];
+      const options = ["attack", "bandage"];
       setAIChoice(options[Math.floor(Math.random() * options.length)]);
     }
   }, [turn]);

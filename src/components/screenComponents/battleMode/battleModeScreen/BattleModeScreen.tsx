@@ -1,11 +1,33 @@
 import styles from "./styles.module.css";
 import { PlayerSummary } from "../../../playerComponents/playerSummary/PlayerSummary";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AbilityMenu } from "../abilityMenu/AbilityMenu";
 import { ThracianStats } from "../../../combatantComponents/combatantThracian/ThracianStats";
 import { BattleAnnouncer } from "../battleAnnouncer/BattleAnnouncer";
+import { useBattleSequence } from "../sharedTools/BattleSequence";
+import { useAIEnemyThracian } from "../sharedTools/useAIEnemyThracian";
 
 export const BattleModeScreen = () => {
+  const [sequence, setSequence] = useState({});
+
+  const {
+    turn,
+    inSequence,
+    enemyHealth,
+    playerHealth,
+    announcerMessage,
+    // playerAnimation,
+    // enemyAnimation,
+  } = useBattleSequence(sequence);
+
+  const aiThracianChoice = useAIEnemyThracian(turn);
+
+  useEffect(() => {
+    if (aiThracianChoice && turn === 1 && !inSequence) {
+      setSequence({ turn, mode: aiThracianChoice });
+    }
+  }, [turn, aiThracianChoice, inSequence]);
+
   return (
     <div className={styles.main}>
       <div className={styles.user}>
@@ -14,9 +36,9 @@ export const BattleModeScreen = () => {
         </div>
         <div className={styles.abilities}>
           <AbilityMenu
-            onAttack={() => console.log("Attack!")}
+            onAttack={() => setSequence({ turn, mode: "attack" })}
             onMagic={() => console.log("Block!")}
-            onHeal={() => console.log("Heal!")}
+            onHeal={() => setSequence({ turn, mode: "bandage" })}
           />
         </div>
         <div className={styles.summary}>
