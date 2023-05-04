@@ -117,6 +117,8 @@ export const useBattleSequence = (sequence) => {
     enemyHealth,
     playerHealth,
     announcerMessage,
+    enemyStats,
+    playerStats, //In the future, enemy & player Stats should be swapped out for profile names.
     // playerAnimation,
     // enemyAnimation,
   };

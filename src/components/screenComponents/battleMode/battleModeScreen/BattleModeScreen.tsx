@@ -6,8 +6,9 @@ import { ThracianStats } from "../../../combatantComponents/combatantThracian/Th
 import { BattleAnnouncer } from "../battleAnnouncer/BattleAnnouncer";
 import { useBattleSequence } from "../sharedTools/BattleSequence";
 import { useAIEnemyThracian } from "../sharedTools/useAIEnemyThracian";
+import { wait } from "../sharedTools/wait";
 
-export const BattleModeScreen = () => {
+export const BattleModeScreen = ({ onGameEnd }) => {
   const [sequence, setSequence] = useState({});
 
   const {
@@ -16,6 +17,8 @@ export const BattleModeScreen = () => {
     enemyHealth,
     playerHealth,
     announcerMessage,
+    playerStats,
+    enemyStats,
     // playerAnimation,
     // enemyAnimation,
   } = useBattleSequence(sequence);
@@ -27,6 +30,17 @@ export const BattleModeScreen = () => {
       setSequence({ turn, mode: aiThracianChoice });
     }
   }, [turn, aiThracianChoice, inSequence]);
+
+  useEffect(() => {
+    if (playerHealth <= 0 || enemyHealth <= 0) {
+      (async () => {
+        await wait(1000);
+        onGameEnd(
+          playerHealth <= 0 ? enemyStats.className : playerStats.className
+        );
+      })();
+    }
+  }, [playerHealth, enemyHealth, onGameEnd]);
 
   return (
     <div className={styles.main}>

@@ -16,3 +16,14 @@
   align-items: center;
   flex-direction: column-reverse;
 }
+
+.title {
+  font-size: 4rem;
+  position: absolute;
+  top: 10%;
+  color: rgb(255, 255, 255);
+  background-color: brown;
+  border-radius: 2rem;
+  border: 3px gray;
+  visibility: visible;
+}

@@ -5,13 +5,20 @@ import { BattleModeScreen } from "./screenComponents/battleMode/battleModeScreen
 import { SpectatorModeButton } from "./screenComponents/spectatorMode/spectatorModeButton/SpectatorModeButton";
 import BattleBackground from "../assets/backgrounds/colosseum.jpg";
 import StartBackground from "../assets/backgrounds/startpage-transformed.jpeg";
+import { GameOver } from "./screenComponents/endScreen/GameOver";
 
 function App() {
   const [mode, setMode] = useState("start");
   const [background, setBackground] = useState(1);
+  const [title, setTitle] = useState(1);
+  const [winner, setWinner] = useState();
 
   const handleBackgroundChange = (backgroundNumber: number) => {
     setBackground(backgroundNumber);
+  };
+
+  const handleTitleChange = (titleNumber: number) => {
+    setTitle(titleNumber);
   };
 
   const getBackground = () => {
@@ -22,11 +29,21 @@ function App() {
     }
   };
 
+  const getTitle = () => {
+    if (title === 1) {
+      return "visible";
+    } else if (title === 2) {
+      return "hidden";
+    }
+  };
+
   useEffect(() => {
     const main = document.getElementById("background");
+    const title = document.getElementById("title");
+    title.style.visibility = getTitle();
     main.style.backgroundImage = `url(${getBackground()})`;
     // main.style.
-  }, [background]);
+  }, [background, title]);
 
   return (
     <div className="main" id="background">
@@ -40,15 +57,35 @@ function App() {
             onStartClick={() => {
               setMode("battleMode");
               handleBackgroundChange(2);
+              handleTitleChange(2);
             }}
           />
         )}
 
-        {mode === "battleMode" && <BattleModeScreen />}
+        <div className="title" id="title">
+          Invicta
+        </div>
+
+        {mode === "battleMode" && (
+          <BattleModeScreen
+            onGameEnd={(winner) => {
+              setWinner(winner);
+              setMode("gameOver");
+            }}
+          />
+        )}
 
         {mode === "spectate" && <>Spectate</>}
 
-        {mode === "gameOver" && <>Game Over</>}
+        {mode === "gameOver" && (
+          <GameOver
+            winner={winner}
+            onStartClick={() => {
+              setWinner(undefined);
+              setMode("battleMode");
+            }}
+          />
+        )}
       </div>
     </div>
   );
