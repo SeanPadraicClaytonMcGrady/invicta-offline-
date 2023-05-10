@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ThracianStats } from "../../../combatantComponents/combatantThracian/ThracianStats";
-import { attack, block } from "./BattleCalculations";
+import { attack } from "./BattleCalculations";
 import { wait } from "./wait";
 
 export const useBattleSequence = (sequence) => {
